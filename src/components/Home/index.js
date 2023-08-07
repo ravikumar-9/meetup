@@ -1,4 +1,4 @@
-import {withRouter} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import RegisterContext from '../../context/RegisterContext'
 
@@ -12,15 +12,10 @@ import {
   Topic,
 } from './styledComponents'
 
-const Home = props => (
+const Home = () => (
   <RegisterContext.Consumer>
     {value => {
       const {nameInput, activeOptionId, isRegistered} = value
-
-      const onGoToLogin = () => {
-        const {history} = props
-        history.replace('/register')
-      }
 
       return isRegistered ? (
         <HomeSection>
@@ -36,7 +31,9 @@ const Home = props => (
           <HomeSection>
             <WelcomeHeading>Welcome to Meetup</WelcomeHeading>
             <RegisterParagraph>Please register for the topic</RegisterParagraph>
-            <RegisterButton onClick={onGoToLogin}>Register</RegisterButton>
+            <Link to="/register">
+              <RegisterButton>Register</RegisterButton>
+            </Link>
             <RegisterImage
               src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
               alt="meetup
@@ -49,4 +46,4 @@ const Home = props => (
   </RegisterContext.Consumer>
 )
 
-export default withRouter(Home)
+export default Home

@@ -26,7 +26,8 @@ const topicsList = [
 const RegisterContext = React.createContext({
   isRegistered: false,
   nameInput: '',
-  activeOptionId: topicsList[0].displayText,
+  activeOptionId: topicsList[0].id,
+  errorMessage: '',
   changeName: () => {},
   changeTopic: () => {},
   submitForm: () => {},

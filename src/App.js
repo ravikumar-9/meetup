@@ -46,6 +46,7 @@ class App extends Component {
     nameInput: '',
     activeOptionId: topicsList[0].displayText,
     isRegistered: false,
+    errorMessage: '',
   }
 
   changeName = name => {
@@ -57,11 +58,16 @@ class App extends Component {
   }
 
   submitForm = () => {
-    this.setState({isRegistered: true})
+    const {nameInput, activeOptionId} = this.state
+    if (nameInput !== '' && activeOptionId !== '') {
+      this.setState({isRegistered: true})
+    } else if (nameInput === '') {
+      this.setState({errorMessage: 'Please enter your name'})
+    }
   }
 
   render() {
-    const {nameInput, activeOptionId, isRegistered} = this.state
+    const {nameInput, activeOptionId, isRegistered, errorMessage} = this.state
 
     return (
       <>
@@ -70,6 +76,7 @@ class App extends Component {
             activeOptionId,
             nameInput,
             isRegistered,
+            errorMessage,
             changeName: this.changeName,
             changeTopic: this.changeTopic,
             submitForm: this.submitForm,

@@ -14,6 +14,7 @@ import {
   SelectElement,
   OptionElement,
   SubmitButton,
+  ErrorMessage,
 } from './styledComponents'
 
 import RegisterContext from '../../context/RegisterContext'
@@ -52,6 +53,7 @@ const Register = props => (
           changeTopic,
           submitForm,
           isRegistered,
+          errorMessage,
         } = value
 
         const onChangeNameInput = event => {
@@ -66,9 +68,8 @@ const Register = props => (
 
         const onSubmitForm = event => {
           event.preventDefault()
-          if (nameInput !== '' && activeOptionId !== '') {
-            submitForm()
-          }
+
+          submitForm()
         }
 
         if (isRegistered === true) {
@@ -101,15 +102,13 @@ const Register = props => (
                       onChange={onChangeTopic}
                     >
                       {topicsList.map(eachTopic => (
-                        <OptionElement
-                          key={eachTopic.id}
-                          value={eachTopic.displayText}
-                        >
+                        <OptionElement key={eachTopic.id} value={eachTopic.id}>
                           {eachTopic.displayText}
                         </OptionElement>
                       ))}
                     </SelectElement>
                     <SubmitButton>Register Now</SubmitButton>
+                    <ErrorMessage>{errorMessage}</ErrorMessage>
                   </FormContainer>
                 </FormMainContainer>
               </RegisterFormContainer>

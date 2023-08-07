@@ -72,9 +72,9 @@ export const OptionElement = styled.option`
 
 export const SubmitButton = styled.button`
   height: 34px;
-  width: 90px;
+  width: max-content;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   color: #ffffff;
   border: none;
   outline: none;
@@ -82,4 +82,9 @@ export const SubmitButton = styled.button`
   align-self: center;
   margin-top: 30px;
   border-radius: 3px;
+`
+export const ErrorMessage = styled.p`
+  font-weight: bold;
+  font-size: 10px;
+  color: red;
 `
